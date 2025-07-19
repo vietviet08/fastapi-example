@@ -16,10 +16,10 @@ services:
       - student_network
 
   api:
-    build: .
+    build: ./student-be
     container_name: student_api
     environment:
-      DATABASE_URL: postgresql://student_user:student_password@db:5432/student_db
+      DATABASE_URL: postgresql://root:root@db:5432/student_db
       SECRET_KEY: your-secret-key-for-production
       DEBUG: "false"
     ports:
@@ -29,8 +29,18 @@ services:
     networks:
       - student_network
     volumes:
-      - .:/app
+      - ./student-be:/app
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  web:
+    build: ./student-fe
+    container_name: student_web
+    ports:
+      - "3000:80"
+    networks:
+      - student_network
+    depends_on:
+      - api
 
 volumes:
   postgres_data:
