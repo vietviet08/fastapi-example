@@ -9,6 +9,8 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from app.db.database import Base
 from app.core.settings import settings
+# Import all models here for Alembic to detect them
+from app.models.student import Student
 
 # This is the Alembic Config object
 config = context.config
