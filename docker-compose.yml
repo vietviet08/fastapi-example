@@ -18,10 +18,8 @@ services:
   api:
     build: ./student-be
     container_name: student_api
-    environment:
-      DATABASE_URL: postgresql://root:root@db:5432/student_db
-      SECRET_KEY: your-secret-key-for-production
-      DEBUG: "false"
+    env_file:
+      - ./student-be/.env.docker
     ports:
       - "8000:8000"
     depends_on:

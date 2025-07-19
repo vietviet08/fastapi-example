@@ -1,6 +1,6 @@
 import { ref, computed, reactive } from 'vue'
 import { studentApi } from '@/api/students'
-import type { Student, StudentCreate, StudentUpdate, StudentListResponse } from '@/types/student'
+import type { Student, StudentCreate, StudentUpdate } from '@/types/student'
 
 export function useStudents() {
   const loading = ref(false)

@@ -9,10 +9,10 @@ class Settings(BaseSettings):
     debug: bool = False
     
     # Database
-    database_url: str = "postgresql://root:root@localhost:5432/student_db"
+    database_url: str
     
     # JWT
-    secret_key: str = "194a563ef79963c3b379eae80228d4ac9b3408ad3faca50dbf44fc21d2aab92e"
+    secret_key: str
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
     

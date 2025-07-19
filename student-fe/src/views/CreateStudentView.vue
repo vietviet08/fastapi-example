@@ -69,16 +69,22 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStudents } from '../composables/useStudents'
 import StudentForm from '../components/StudentForm.vue'
-import type { StudentCreate } from '../types/student'
+import type { StudentCreate, StudentUpdate } from '../types/student'
 
 const router = useRouter()
 
 const { loading, error, createStudent } = useStudents()
 const showSuccess = ref(false)
 
-const handleSubmit = async (studentData: StudentCreate) => {
+const handleSubmit = async (studentData: StudentCreate | StudentUpdate) => {
   try {
-    await createStudent(studentData)
+    // Since this is CreateStudentView and isEdit is not passed to StudentForm,
+    // we know this will always be StudentCreate with student_id included
+    if ('student_id' in studentData) {
+      await createStudent(studentData as StudentCreate)
+    } else {
+      throw new Error('Invalid data: student_id is required for creating a student')
+    }
     showSuccess.value = true
     
     // Redirect after success
