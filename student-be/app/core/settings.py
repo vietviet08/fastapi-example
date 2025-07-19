@@ -1,0 +1,27 @@
+from typing import List
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    # App settings
+    app_name: str = "Student Management API"
+    app_version: str = "1.0.0"
+    debug: bool = False
+    
+    # Database
+    database_url: str = "postgresql://root:root@localhost:5432/student_db"
+    
+    # JWT
+    secret_key: str = "194a563ef79963c3b379eae80228d4ac9b3408ad3faca50dbf44fc21d2aab92e"
+    algorithm: str = "HS256"
+    access_token_expire_minutes: int = 30
+    
+    # CORS
+    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    
+    class Config:
+        env_file = ".env"
+        case_sensitive = False
+
+
+settings = Settings()
