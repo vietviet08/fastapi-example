@@ -69,6 +69,8 @@
         "personalInfo": "Thông tin cá nhân",
         "contactInfo": "Thông tin liên hệ",
         "confirmDelete": "Bạn có chắc chắn muốn xóa sinh viên này?",
+        "confirmDeleteMessage": "Hành động này sẽ xóa vĩnh viễn {name}. Điều này không thể hoàn tác.",
+        "confirmDeleteWarning": "Hành động này sẽ vô hiệu hóa tài khoản sinh viên.",
         "deleteSuccess": "Xóa sinh viên thành công",
         "createSuccess": "Tạo sinh viên thành công",
         "updateSuccess": "Cập nhật sinh viên thành công",

@@ -175,18 +175,18 @@
     <!-- Delete Confirmation Modal -->
     <Modal
       v-model="showDeleteModal"
-      title="Xác nhận xóa"
+      :title="$t('students.confirmDelete')"
       size="sm"
     >
       <div class="text-center">
         <svg class="mx-auto mb-4 w-14 h-14 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
         </svg>
-        <h3 class="mb-2 text-lg font-semibold text-gray-900">Bạn có chắc chắn?</h3>
+        <h3 class="mb-2 text-lg font-semibold text-gray-900">{{ $t('students.confirmDelete') }}</h3>
         <p class="text-gray-500 mb-4">
-          Bạn có muốn xóa sinh viên <strong>{{ currentStudent?.last_name }} {{ currentStudent?.first_name }}</strong> không?
+          {{ $t('students.confirmDeleteMessage', { name: currentStudent?.first_name }) }}
         </p>
-        <p class="text-sm text-gray-400 mb-6">Hành động này sẽ vô hiệu hóa tài khoản sinh viên.</p>
+        <p class="text-sm text-gray-400 mb-6">{{ $t('students.confirmDeleteWarning') }}</p>
       </div>
 
       <template #footer>
@@ -195,14 +195,14 @@
             @click="showDeleteModal = false"
             class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
           >
-            Hủy
+            {{ $t('common.cancel') }}
           </button>
           <button
             @click="handleDelete"
             :disabled="loading"
             class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg border border-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 disabled:opacity-50"
           >
-            {{ loading ? 'Đang xóa...' : 'Xóa' }}
+            {{ loading ? $t('common.deleting') : $t('common.delete') }}
           </button>
         </div>
       </template>
