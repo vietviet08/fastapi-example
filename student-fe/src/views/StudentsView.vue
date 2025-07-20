@@ -1,102 +1,148 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">Quản lý sinh viên</h1>
-        <p class="mt-2 text-gray-600">Danh sách tất cả sinh viên trong hệ thống</p>
-      </div>
-
-      <!-- Actions Bar -->
-      <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
-        <!-- Search -->
-        <div class="flex-1 max-w-md">
-          <SearchBar
-            v-model="searchQuery"
-            @search="handleSearch"
-            placeholder="Tìm kiếm theo tên, mã SV, email..."
-          />
+  <div class="space-y-6">
+    <!-- Page Header -->
+    <div class="bg-white border-b border-slate-200 px-6 py-4 rounded-lg shadow-sm">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+        <div class="mb-4 lg:mb-0">
+          <h1 class="text-2xl font-bold text-slate-900 flex items-center">
+            <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+              </svg>
+            </div>
+            Student Management
+          </h1>
+          <p class="text-slate-600 mt-1">Manage and track all students in your system</p>
         </div>
         
-        <!-- Actions -->
-        <div class="flex items-center space-x-3">
-          <!-- Refresh button -->
-          <button
-            @click="refreshStudents"
-            :disabled="loading"
-            class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-          >
-            <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-            </svg>
-            Làm mới
-          </button>
-          
-          <!-- Add student button -->
-          <router-link
-            to="/students/create"
-            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-            </svg>
-            Thêm sinh viên
-          </router-link>
-        </div>
-      </div>
-
-      <!-- Error Alert -->
-      <div
-        v-if="error"
-        class="mb-6 rounded-md bg-red-50 p-4"
-      >
-        <div class="flex">
-          <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-          </svg>
-          <div class="ml-3">
-            <h3 class="text-sm font-medium text-red-800">Có lỗi xảy ra</h3>
-            <div class="mt-2 text-sm text-red-700">{{ error }}</div>
+        <!-- Stats -->
+        <div class="flex items-center space-x-6 text-sm text-slate-600">
+          <div class="flex items-center space-x-2">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>{{ totalStudents }} Total Students</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <span>{{ activeStudents }} Active</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Loading State -->
-      <div v-if="loading" class="flex justify-center items-center py-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-        <span class="ml-3 text-gray-600">Đang tải dữ liệu...</span>
-      </div>
+    <!-- Search and Actions -->
+    <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-md">
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              v-model="searchQuery"
+              @input="handleSearchInput"
+              type="text"
+              placeholder="Search students by name, ID, or email..."
+              class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            />
+          </div>
+        </div>
 
-      <!-- Empty State -->
-      <div
-        v-else-if="!hasStudents && !loading"
-        class="text-center py-12"
-      >
-        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-        </svg>
-        <h3 class="mt-2 text-sm font-medium text-gray-900">Không có sinh viên</h3>
-        <p class="mt-1 text-sm text-gray-500">
-          {{ searchQuery ? 'Không tìm thấy sinh viên nào phù hợp.' : 'Hãy bắt đầu bằng cách thêm sinh viên mới.' }}
-        </p>
-        <div class="mt-6">
+        <!-- Action Buttons -->
+        <div class="flex items-center space-x-3">
+          <!-- Filter Dropdown -->
+          <div class="relative">
+            <button
+              @click="showFilters = !showFilters"
+              class="inline-flex items-center px-4 py-3 border border-slate-300 rounded-lg shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors"
+            >
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z" />
+              </svg>
+              Filter
+              <svg class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': showFilters }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Refresh Button -->
+          <button
+            @click="refreshStudents"
+            :disabled="loading"
+            class="inline-flex items-center px-4 py-3 border border-slate-300 rounded-lg shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            <svg class="w-4 h-4 mr-2" :class="{ 'animate-spin': loading }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Refresh
+          </button>
+
+          <!-- Add Student Button -->
           <router-link
             to="/students/create"
-            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            class="inline-flex items-center px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transform transition-all duration-200 hover:scale-105"
           >
-            <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
-            Thêm sinh viên đầu tiên
+            Add Student
           </router-link>
         </div>
       </div>
+    </div>
 
-      <!-- Students Grid -->
-      <div
-        v-else-if="hasStudents"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-      >
+    <!-- Error Alert -->
+    <div v-if="error" class="bg-red-50 border border-red-200 rounded-lg p-4">
+      <div class="flex items-center space-x-3">
+        <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <h3 class="text-sm font-medium text-red-800">Error occurred</h3>
+          <p class="text-sm text-red-700 mt-1">{{ error }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div v-if="loading" class="bg-white rounded-lg shadow-sm border border-slate-200 p-12">
+      <div class="flex flex-col items-center justify-center space-y-4">
+        <div class="animate-spin rounded-full h-12 w-12 border-2 border-indigo-500 border-t-transparent"></div>
+        <p class="text-slate-600 font-medium">Loading students...</p>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div v-else-if="!hasStudents && !loading" class="bg-white rounded-lg shadow-sm border border-slate-200 p-12">
+      <div class="text-center">
+        <div class="w-24 h-24 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-12 h-12 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 mb-2">No students found</h3>
+        <p class="text-slate-600 mb-6 max-w-md mx-auto">
+          {{ searchQuery ? 'No students match your search criteria. Try adjusting your search terms.' : 'Get started by adding your first student to the system.' }}
+        </p>
+        <router-link
+          to="/students/create"
+          class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transform transition-all duration-200 hover:scale-105"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          {{ searchQuery ? 'Add New Student' : 'Add First Student' }}
+        </router-link>
+      </div>
+    </div>
+
+    <!-- Students Grid -->
+    <div v-else-if="hasStudents" class="space-y-6">
+      <!-- Students Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         <StudentCard
           v-for="student in students"
           :key="student.id"
@@ -108,7 +154,7 @@
       </div>
 
       <!-- Pagination -->
-      <div v-if="hasStudents && pagination.pages > 1">
+      <div v-if="pagination.pages > 1" class="bg-white rounded-lg shadow-sm border border-slate-200 p-4">
         <Pagination
           :current-page="pagination.page"
           :total-pages="pagination.pages"
@@ -124,47 +170,43 @@
     <!-- Delete Confirmation Modal -->
     <Modal
       v-model="showDeleteModal"
-      title="Xác nhận xóa"
+      title="Confirm Deletion"
       size="sm"
     >
       <div class="text-center">
-        <svg class="mx-auto mb-4 w-14 h-14 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
-        </svg>
-        <h3 class="mb-2 text-lg font-semibold text-gray-900">Bạn có chắc chắn?</h3>
-        <p class="text-gray-500 mb-4">
-          Bạn có muốn xóa sinh viên <strong>{{ studentToDelete?.last_name }} {{ studentToDelete?.first_name }}</strong> không?
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">Are you sure?</h3>
+        <p class="text-slate-600 mb-6">
+          This action will permanently delete <strong>{{ studentToDelete?.first_name }} {{ studentToDelete?.last_name }}</strong>. This cannot be undone.
         </p>
-        <p class="text-sm text-gray-400 mb-6">Hành động này sẽ vô hiệu hóa tài khoản sinh viên.</p>
-      </div>
-
-      <template #footer>
-        <div class="flex space-x-3 justify-center">
+        <div class="flex justify-center space-x-3">
           <button
             @click="showDeleteModal = false"
-            class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
+            class="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors"
           >
-            Hủy
+            Cancel
           </button>
           <button
             @click="handleDeleteStudent"
-            :disabled="loading"
-            class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg border border-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 disabled:opacity-50"
+            class="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors"
           >
-            {{ loading ? 'Đang xóa...' : 'Xóa' }}
+            Delete Student
           </button>
         </div>
-      </template>
+      </div>
     </Modal>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStudents } from '../composables/useStudents'
 import StudentCard from '../components/StudentCard.vue'
-import SearchBar from '../components/SearchBar.vue'
 import Pagination from '../components/Pagination.vue'
 import Modal from '../components/Modal.vue'
 import type { Student } from '../types/student'
@@ -186,17 +228,24 @@ const {
   goToPage
 } = useStudents()
 
-// Delete modal state
+// Additional state
 const showDeleteModal = ref(false)
 const studentToDelete = ref<Student | null>(null)
+const showFilters = ref(false)
+
+// Computed properties
+const totalStudents = computed(() => pagination.total)
+const activeStudents = computed(() => students.value.filter(s => s.is_active).length)
 
 // Methods
-const refreshStudents = async () => {
-  await fetchStudents(pagination.page, pagination.size, searchQuery.value)
+const handleSearchInput = async (event: Event) => {
+  const target = event.target as HTMLInputElement
+  searchQuery.value = target.value
+  await searchStudents(target.value)
 }
 
-const handleSearch = async (query: string) => {
-  await searchStudents(query)
+const refreshStudents = async () => {
+  await fetchStudents(pagination.page, pagination.size, searchQuery.value)
 }
 
 const viewStudent = (student: Student) => {
@@ -213,14 +262,15 @@ const confirmDeleteStudent = (student: Student) => {
 }
 
 const handleDeleteStudent = async () => {
-  if (!studentToDelete.value) return
-  
-  try {
-    await deleteStudent(studentToDelete.value.id)
-    showDeleteModal.value = false
-    studentToDelete.value = null
-  } catch (err) {
-    // Error is handled by the composable
+  if (studentToDelete.value) {
+    try {
+      await deleteStudent(studentToDelete.value.id)
+      showDeleteModal.value = false
+      studentToDelete.value = null
+      await refreshStudents()
+    } catch (error) {
+      console.error('Failed to delete student:', error)
+    }
   }
 }
 
@@ -229,3 +279,21 @@ onMounted(() => {
   fetchStudents()
 })
 </script>
+
+<style scoped>
+/* Custom animations and styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+</style>
