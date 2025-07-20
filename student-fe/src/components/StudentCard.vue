@@ -72,21 +72,20 @@
           <span class="font-medium">{{ formatDate(student.date_of_birth) }}</span>
         </div>
 
-        <!-- Địa chỉ -->
-        <div v-if="student.address">
-          <div class="flex items-start text-sm text-slate-600">
-            <div
-              class="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-slate-200 transition-colors">
-              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a2 2 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <span class="line-clamp-2 font-medium">{{ student.address }}</span>
+        <div v-if="student.date_of_birth"
+          class="flex items-center text-sm text-slate-600 hover:text-slate-800 transition-colors">
+          <div
+            class="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-slate-200 transition-colors">
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 11a2 2 0 11-6 0 3 3 0 016 0z" />
+            </svg>
           </div>
+          <span class="font-medium">{{ student.address }}</span>
         </div>
+
       </div>
     </div>
 
