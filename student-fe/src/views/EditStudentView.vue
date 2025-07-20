@@ -95,14 +95,12 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
 import { useStudents } from '../composables/useStudents'
 import StudentForm from '../components/StudentForm.vue'
 import type { StudentUpdate } from '../types/student'
 
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
 
 const { loading, error, currentStudent, fetchStudent, updateStudent } = useStudents()
 const showSuccess = ref(false)

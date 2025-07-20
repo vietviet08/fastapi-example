@@ -72,7 +72,7 @@
           <span class="font-medium">{{ formatDate(student.date_of_birth) }}</span>
         </div>
 
-        <div v-if="student.date_of_birth"
+        <div v-if="student.address"
           class="flex items-center text-sm text-slate-600 hover:text-slate-800 transition-colors">
           <div
             class="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-slate-200 transition-colors">

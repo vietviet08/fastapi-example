@@ -213,7 +213,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
 import { format, parseISO } from 'date-fns'
 import { vi } from 'date-fns/locale'
 import { useStudents } from '../composables/useStudents'
@@ -221,7 +220,6 @@ import Modal from '../components/Modal.vue'
 
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
 
 const { loading, error, currentStudent, fetchStudent, deleteStudent } = useStudents()
 const showDeleteModal = ref(false)

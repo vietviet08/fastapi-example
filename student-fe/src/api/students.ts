@@ -1,8 +1,6 @@
 import { apiClient } from '@/api/auth'
 import type { Student, StudentCreate, StudentUpdate, StudentListResponse } from '@/types/student'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-
 // Remove old axios setup since we'll use apiClient from auth
 // const api = axios.create({...})
 

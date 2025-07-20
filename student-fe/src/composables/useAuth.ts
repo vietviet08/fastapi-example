@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { authAPI } from '@/api/auth'
-import type { LoginRequest, LoginResponse, UserResponse } from '@/types/auth'
+import type { LoginRequest, UserResponse } from '@/types/auth'
 
 // Global auth state
 const token = ref<string | null>(localStorage.getItem('authToken'))
