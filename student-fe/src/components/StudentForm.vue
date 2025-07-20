@@ -2,13 +2,13 @@
   <form @submit.prevent="handleSubmit" class="space-y-6">
     <!-- Thông tin cá nhân -->
     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-      <h3 class="text-lg font-medium text-gray-900 mb-4">Thông tin cá nhân</h3>
+      <h3 class="text-lg font-medium text-gray-900 mb-4">{{ $t('students.personalInfo') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Mã sinh viên -->
         <div>
           <label for="student_id" class="block text-sm font-medium text-gray-700 mb-2">
-            Mã sinh viên <span class="text-red-500">*</span>
+            {{ $t('students.fields.studentId') }} <span class="text-red-500">*</span>
           </label>
           <input
             id="student_id"
@@ -20,14 +20,14 @@
               'block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm',
               isEdit ? 'bg-gray-50 text-gray-500 cursor-not-allowed' : 'border-gray-300'
             ]"
-            placeholder="Nhập mã sinh viên"
+            :placeholder="$t('students.placeholders.studentId')"
           />
         </div>
 
         <!-- Họ -->
         <div>
           <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">
-            Họ <span class="text-red-500">*</span>
+            {{ $t('students.fields.firstName') }} <span class="text-red-500">*</span>
           </label>
           <input
             id="first_name"
@@ -35,14 +35,14 @@
             type="text"
             required
             class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Nhập họ"
+            :placeholder="$t('students.placeholders.firstName')"
           />
         </div>
 
         <!-- Tên -->
         <div>
           <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">
-            Tên <span class="text-red-500">*</span>
+            {{ $t('students.fields.lastName') }} <span class="text-red-500">*</span>
           </label>
           <input
             id="last_name"
@@ -50,14 +50,14 @@
             type="text"
             required
             class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Nhập tên"
+            :placeholder="$t('students.placeholders.lastName')"
           />
         </div>
 
         <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-            Email <span class="text-red-500">*</span>
+            {{ $t('students.fields.email') }} <span class="text-red-500">*</span>
           </label>
           <input
             id="email"
@@ -65,28 +65,28 @@
             type="email"
             required
             class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Nhập email"
+            :placeholder="$t('students.placeholders.email')"
           />
         </div>
 
         <!-- Số điện thoại -->
         <div>
           <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-            Số điện thoại
+            {{ $t('students.fields.phone') }}
           </label>
           <input
             id="phone"
             v-model="formData.phone"
             type="tel"
             class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            placeholder="Nhập số điện thoại"
+            :placeholder="$t('students.placeholders.phone')"
           />
         </div>
 
         <!-- Ngày sinh -->
         <div>
           <label for="date_of_birth" class="block text-sm font-medium text-gray-700 mb-2">
-            Ngày sinh
+            {{ $t('students.fields.dateOfBirth') }}
           </label>
           <input
             id="date_of_birth"
@@ -100,14 +100,14 @@
       <!-- Địa chỉ -->
       <div class="mt-6">
         <label for="address" class="block text-sm font-medium text-gray-700 mb-2">
-          Địa chỉ
+          {{ $t('students.fields.address') }}
         </label>
         <textarea
           id="address"
           v-model="formData.address"
           rows="3"
           class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-          placeholder="Nhập địa chỉ"
+          :placeholder="$t('students.placeholders.address')"
         ></textarea>
       </div>
 
@@ -119,7 +119,7 @@
             type="checkbox"
             class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           />
-          <span class="ml-2 text-sm text-gray-700">Trạng thái hoạt động</span>
+          <span class="ml-2 text-sm text-gray-700">{{ $t('students.fields.isActive') }}</span>
         </label>
       </div>
     </div>
@@ -131,7 +131,7 @@
         @click="$emit('cancel')"
         class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
       >
-        Hủy
+        {{ $t('common.cancel') }}
       </button>
       
       <button
@@ -143,7 +143,7 @@
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
-        {{ loading ? 'Đang xử lý...' : (isEdit ? 'Cập nhật' : 'Tạo mới') }}
+        {{ loading ? $t('common.loading') : (isEdit ? $t('common.update') : $t('common.create')) }}
       </button>
     </div>
   </form>

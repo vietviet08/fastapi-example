@@ -1,0 +1,141 @@
+{
+    "common": {
+        "loading": "Đang tải...",
+        "error": "Lỗi",
+        "success": "Thành công",
+        "cancel": "Hủy",
+        "confirm": "Xác nhận",
+        "save": "Lưu",
+        "delete": "Xóa",
+        "edit": "Sửa",
+        "create": "Tạo",
+        "update": "Cập nhật",
+        "search": "Tìm kiếm",
+        "back": "Quay lại",
+        "next": "Tiếp theo",
+        "previous": "Trước",
+        "yes": "Có",
+        "no": "Không",
+        "actions": "Hành động",
+        "view": "Xem",
+        "close": "Đóng",
+        "submit": "Gửi"
+    },
+    "nav": {
+        "brand": "EduManager",
+        "tagline": "Hệ thống quản lý sinh viên",
+        "students": "Sinh viên",
+        "dashboard": "Bảng điều khiển",
+        "reports": "Báo cáo",
+        "settings": "Cài đặt",
+        "profile": "Hồ sơ của bạn",
+        "help": "Trợ giúp & Hỗ trợ",
+        "logout": "Đăng xuất",
+        "login": "Đăng nhập"
+    },
+    "auth": {
+        "login": {
+            "title": "Hệ thống quản lý sinh viên",
+            "subtitle": "Vui lòng đăng nhập để tiếp tục",
+            "email": "Email",
+            "password": "Mật khẩu",
+            "emailPlaceholder": "Nhập email của bạn",
+            "passwordPlaceholder": "Nhập mật khẩu của bạn",
+            "loginButton": "Đăng nhập",
+            "loggingIn": "Đang đăng nhập...",
+            "demoCredentials": "Thông tin đăng nhập demo:",
+            "invalidCredentials": "Email hoặc mật khẩu không đúng",
+            "loginSuccess": "Đăng nhập thành công",
+            "signedInAs": "Đã đăng nhập với tài khoản"
+        }
+    },
+    "students": {
+        "title": "Sinh viên",
+        "subtitle": "Quản lý hồ sơ và thông tin sinh viên",
+        "addStudent": "Thêm sinh viên",
+        "searchPlaceholder": "Tìm kiếm sinh viên...",
+        "totalStudents": "Tổng số sinh viên",
+        "activeStudents": "Sinh viên hoạt động",
+        "filter": "Lọc sinh viên",
+        "refresh": "Làm mới",
+        "noStudentsFound": "Không tìm thấy sinh viên",
+        "studentDetails": "Chi tiết sinh viên",
+        "editStudent": "Sửa sinh viên",
+        "deleteStudent": "Xóa sinh viên",
+        "createStudent": "Tạo sinh viên",
+        "updateStudent": "Cập nhật sinh viên",
+        "createSubtitle": "Điền thông tin để tạo sinh viên mới trong hệ thống",
+        "editSubtitle": "Cập nhật thông tin sinh viên",
+        "personalInfo": "Thông tin cá nhân",
+        "contactInfo": "Thông tin liên hệ",
+        "confirmDelete": "Bạn có chắc chắn muốn xóa sinh viên này?",
+        "deleteSuccess": "Xóa sinh viên thành công",
+        "createSuccess": "Tạo sinh viên thành công",
+        "updateSuccess": "Cập nhật sinh viên thành công",
+        "messages": {
+            "deleteSuccess": "Xóa sinh viên thành công",
+            "deleteError": "Không thể xóa sinh viên"
+        },
+        "modal": {
+            "confirmDeletion": "Xác nhận xóa",
+            "areYouSure": "Bạn có chắc chắn?",
+            "deleteWarning": "Hành động này sẽ xóa vĩnh viễn {studentName}. Điều này không thể hoàn tác.",
+            "deleteConfirmText": "Sau khi xóa, tất cả dữ liệu liên quan đến sinh viên này sẽ được xóa vĩnh viễn khỏi hệ thống.",
+            "typeToConfirm": "Nhập DELETE để xác nhận",
+            "deletePlaceholder": "Nhập DELETE tại đây...",
+            "dangerZone": "Vùng nguy hiểm"
+        },
+        "fields": {
+            "studentId": "Mã sinh viên",
+            "firstName": "Tên",
+            "lastName": "Họ",
+            "fullName": "Họ và tên",
+            "email": "Email",
+            "phone": "Số điện thoại",
+            "dateOfBirth": "Ngày sinh",
+            "address": "Địa chỉ",
+            "status": "Trạng thái",
+            "isActive": "Đang hoạt động",
+            "createdAt": "Ngày tạo",
+            "updatedAt": "Ngày cập nhật"
+        },
+        "status": {
+            "active": "Hoạt động",
+            "inactive": "Không hoạt động"
+        },
+        "placeholders": {
+            "studentId": "Nhập mã sinh viên",
+            "firstName": "Nhập tên",
+            "lastName": "Nhập họ",
+            "email": "Nhập địa chỉ email",
+            "phone": "Nhập số điện thoại",
+            "dateOfBirth": "Chọn ngày sinh",
+            "address": "Nhập địa chỉ"
+        },
+        "validation": {
+            "studentIdRequired": "Mã sinh viên là bắt buộc",
+            "firstNameRequired": "Tên là bắt buộc",
+            "lastNameRequired": "Họ là bắt buộc",
+            "emailRequired": "Email là bắt buộc",
+            "emailInvalid": "Vui lòng nhập email hợp lệ",
+            "studentIdExists": "Mã sinh viên đã tồn tại",
+            "emailExists": "Email đã tồn tại"
+        },
+        "table": {
+            "showingResults": "Hiển thị {from} đến {to} trên tổng số {total} kết quả",
+            "noData": "Không có sinh viên",
+            "itemsPerPage": "Số mục mỗi trang"
+        }
+    },
+    "pagination": {
+        "previous": "Trước",
+        "next": "Tiếp",
+        "page": "Trang {current} / {total}",
+        "showing": "Hiển thị {from} đến {to} trên tổng số {total} mục",
+        "itemsPerPage": "Số mục mỗi trang"
+    },
+    "language": {
+        "select": "Chọn ngôn ngữ",
+        "current": "Hiện tại: {language}"
+    }
+}

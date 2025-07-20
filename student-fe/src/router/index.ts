@@ -40,7 +40,7 @@ const router = createRouter({
       path: '/students/:id/edit',
       name: 'edit-student',
       component: EditStudentView,
-      meta: { title: 'Chỉnh sửa sinh viên', requiresAuth: true }
+      meta: { title: 'Sửa sinh viên', requiresAuth: true }
     },
     {
       path: '/:pathMatch(.*)*',

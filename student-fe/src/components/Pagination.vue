@@ -1,65 +1,70 @@
 <template>
-  <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+  <div class="bg-white px-6 py-4 flex items-center justify-between border-t border-slate-200 rounded-b-lg">
     <div class="flex-1 flex justify-between sm:hidden">
       <!-- Mobile pagination -->
       <button
         @click="$emit('prev')"
         :disabled="!hasPrev"
         :class="[
-          'relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md',
+          'relative inline-flex items-center px-4 py-2 border rounded-lg text-sm font-medium transition-colors',
           hasPrev
-            ? 'text-gray-700 bg-white hover:bg-gray-50'
-            : 'text-gray-400 bg-gray-100 cursor-not-allowed'
+            ? 'text-slate-700 bg-white border-slate-300 hover:bg-slate-50 hover:border-slate-400'
+            : 'text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed'
         ]"
       >
-        Trước
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        {{ $t('pagination.previous') }}
       </button>
       <button
         @click="$emit('next')"
         :disabled="!hasNext"
         :class="[
-          'ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md',
+          'relative inline-flex items-center px-4 py-2 border rounded-lg text-sm font-medium transition-colors',
           hasNext
-            ? 'text-gray-700 bg-white hover:bg-gray-50'
-            : 'text-gray-400 bg-gray-100 cursor-not-allowed'
+            ? 'text-slate-700 bg-white border-slate-300 hover:bg-slate-50 hover:border-slate-400'
+            : 'text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed'
         ]"
       >
-        Sau
+        {{ $t('pagination.next') }}
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
       </button>
     </div>
     
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
       <!-- Results info -->
-      <div>
-        <p class="text-sm text-gray-700">
-          Hiển thị
-          <span class="font-medium">{{ startItem }}</span>
-          đến
-          <span class="font-medium">{{ endItem }}</span>
-          trong tổng số
-          <span class="font-medium">{{ total }}</span>
-          kết quả
-        </p>
+      <div class="flex items-center space-x-2">
+        <div class="px-3 py-1 bg-slate-100 rounded-lg">
+          <p class="text-sm font-medium text-slate-700">
+            {{ $t('pagination.showing', { from: startItem, to: endItem, total: total }) }}
+          </p>
+        </div>
+        <div class="text-sm text-slate-500">
+          {{ $t('pagination.page', { current: currentPage, total: totalPages }) }}
+        </div>
       </div>
       
       <!-- Desktop pagination -->
-      <div>
-        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+      <div class="flex items-center space-x-1">
+        <nav class="relative z-0 inline-flex items-center space-x-1" aria-label="Pagination">
           <!-- Previous button -->
           <button
             @click="$emit('prev')"
             :disabled="!hasPrev"
             :class="[
-              'relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 text-sm font-medium',
+              'relative inline-flex items-center px-3 py-2 rounded-lg border text-sm font-medium transition-all duration-200',
               hasPrev
-                ? 'text-gray-500 bg-white hover:bg-gray-50'
-                : 'text-gray-300 bg-gray-100 cursor-not-allowed'
+                ? 'text-slate-700 bg-white border-slate-300 hover:bg-slate-50 hover:border-slate-400 hover:shadow-sm'
+                : 'text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed'
             ]"
           >
-            <span class="sr-only">Trang trước</span>
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
+            <span class="hidden sm:inline">{{ $t('pagination.previous') }}</span>
           </button>
           
           <!-- Page numbers -->
@@ -68,19 +73,21 @@
               v-if="typeof pageNum === 'number'"
               @click="$emit('goto', pageNum)"
               :class="[
-                'relative inline-flex items-center px-4 py-2 border text-sm font-medium',
+                'relative inline-flex items-center px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-200',
                 pageNum === currentPage
-                  ? 'z-10 bg-blue-50 border-blue-500 text-blue-600'
-                  : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
+                  ? 'z-10 bg-indigo-600 border-indigo-600 text-white shadow-lg transform scale-110'
+                  : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 hover:shadow-sm'
               ]"
             >
               {{ pageNum }}
             </button>
             <span
               v-else
-              class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"
+              class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-slate-500"
             >
-              ...
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
+              </svg>
             </span>
           </template>
           
@@ -89,15 +96,15 @@
             @click="$emit('next')"
             :disabled="!hasNext"
             :class="[
-              'relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 text-sm font-medium',
+              'relative inline-flex items-center px-3 py-2 rounded-lg border text-sm font-medium transition-all duration-200',
               hasNext
-                ? 'text-gray-500 bg-white hover:bg-gray-50'
-                : 'text-gray-300 bg-gray-100 cursor-not-allowed'
+                ? 'text-slate-700 bg-white border-slate-300 hover:bg-slate-50 hover:border-slate-400 hover:shadow-sm'
+                : 'text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed'
             ]"
           >
-            <span class="sr-only">Trang sau</span>
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+            <span class="hidden sm:inline">{{ $t('pagination.next') }}</span>
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </nav>

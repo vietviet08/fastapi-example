@@ -11,19 +11,19 @@
             <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
-            Quay lại chi tiết
+            {{ $t('common.back') }}
           </router-link>
         </div>
-        <h1 class="text-3xl font-bold text-gray-900">Chỉnh sửa sinh viên</h1>
+        <h1 class="text-3xl font-bold text-gray-900">{{ $t('students.editStudent') }}</h1>
         <p v-if="currentStudent" class="mt-2 text-gray-600">
-          Cập nhật thông tin cho {{ currentStudent.last_name }} {{ currentStudent.first_name }}
+          {{ $t('students.editSubtitle') }}
         </p>
       </div>
 
       <!-- Loading initial data -->
       <div v-if="loadingStudent" class="flex justify-center items-center py-12">
         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-        <span class="ml-3 text-gray-600">Đang tải thông tin sinh viên...</span>
+        <span class="ml-3 text-gray-600">{{ $t('common.loading') }}</span>
       </div>
 
       <!-- Error loading student -->
@@ -95,12 +95,14 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStudents } from '../composables/useStudents'
 import StudentForm from '../components/StudentForm.vue'
 import type { StudentUpdate } from '../types/student'
 
 const route = useRoute()
 const router = useRouter()
+const { t } = useI18n()
 
 const { loading, error, currentStudent, fetchStudent, updateStudent } = useStudents()
 const showSuccess = ref(false)

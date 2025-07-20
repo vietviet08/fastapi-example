@@ -1,6 +1,11 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50">
     <div class="max-w-md w-full mx-4">
+      <!-- Language Selector -->
+      <div class="flex justify-end mb-4">
+        <LanguageSelector />
+      </div>
+      
       <!-- Login Card -->
       <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
         <!-- Header -->
@@ -10,8 +15,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          <h1 class="text-2xl font-bold text-slate-900 mb-2">Welcome back</h1>
-          <p class="text-slate-600">Sign in to your EduManager account</p>
+          <h1 class="text-2xl font-bold text-slate-900 mb-2">{{ $t('auth.login.title') }}</h1>
+          <p class="text-slate-600">{{ $t('auth.login.subtitle') }}</p>
         </div>
 
         <!-- Login Form -->
@@ -19,7 +24,7 @@
           <!-- Email Field -->
           <div>
             <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
-              Email address
+              {{ $t('auth.login.email') }}
             </label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -35,7 +40,7 @@
                 required
                 :disabled="loading"
                 class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors disabled:bg-slate-50 disabled:cursor-not-allowed"
-                placeholder="Enter your email"
+                :placeholder="$t('auth.login.emailPlaceholder')"
               />
             </div>
           </div>
@@ -43,7 +48,7 @@
           <!-- Password Field -->
           <div>
             <label for="password" class="block text-sm font-medium text-slate-700 mb-2">
-              Password
+              {{ $t('auth.login.password') }}
             </label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -59,7 +64,7 @@
                 required
                 :disabled="loading"
                 class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors disabled:bg-slate-50 disabled:cursor-not-allowed"
-                placeholder="Enter your password"
+                :placeholder="$t('auth.login.passwordPlaceholder')"
               />
             </div>
           </div>
@@ -80,13 +85,13 @@
           >
             <div v-if="loading" class="flex items-center space-x-2">
               <div class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-              <span>Signing in...</span>
+              <span>{{ $t('auth.login.loggingIn') }}</span>
             </div>
             <div v-else class="flex items-center space-x-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
               </svg>
-              <span>Sign in</span>
+              <span>{{ $t('auth.login.loginButton') }}</span>
             </div>
           </button>
         </form>
@@ -97,7 +102,7 @@
             <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 class="text-sm font-medium text-slate-700">Demo Credentials</h3>
+            <h3 class="text-sm font-medium text-slate-700">{{ $t('auth.login.demoCredentials') }}</h3>
           </div>
           <div class="space-y-1 text-xs text-slate-600">
             <p><span class="font-medium">Email:</span> admin@example.com</p>
@@ -120,9 +125,12 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
+import { useI18n } from 'vue-i18n'
+import LanguageSelector from '@/components/LanguageSelector.vue'
 
 const router = useRouter()
 const { login, isAuthenticated, loading } = useAuth()
+const { t } = useI18n()
 
 const form = ref({
   email: '',
@@ -138,7 +146,7 @@ const handleLogin = async () => {
   if (success) {
     router.push('/students')
   } else {
-    error.value = 'Invalid email or password'
+    error.value = t('auth.login.invalidCredentials')
   }
 }
 

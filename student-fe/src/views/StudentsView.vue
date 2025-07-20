@@ -10,20 +10,20 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
               </svg>
             </div>
-            Student Management
+            {{ $t('students.title') }}
           </h1>
-          <p class="text-slate-600 mt-1">Manage and track all students in your system</p>
+          <p class="text-slate-600 mt-1">{{ $t('students.subtitle') }}</p>
         </div>
         
         <!-- Stats -->
         <div class="flex items-center space-x-6 text-sm text-slate-600">
           <div class="flex items-center space-x-2">
             <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-            <span>{{ totalStudents }} Total Students</span>
+            <span>{{ totalStudents }} {{ $t('students.totalStudents') }}</span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <span>{{ activeStudents }} Active</span>
+            <span>{{ activeStudents }} {{ $t('students.activeStudents') }}</span>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
               v-model="searchQuery"
               @input="handleSearchInput"
               type="text"
-              placeholder="Search students by name, ID, or email..."
+              :placeholder="$t('students.searchPlaceholder')"
               class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
             />
           </div>
@@ -61,7 +61,7 @@
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z" />
               </svg>
-              Filter
+              <span>{{ $t('students.filter') }}</span>
               <svg class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': showFilters }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
@@ -77,7 +77,7 @@
             <svg class="w-4 h-4 mr-2" :class="{ 'animate-spin': loading }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            Refresh
+            {{ $t('students.refresh') }}
           </button>
 
           <!-- Add Student Button -->
@@ -88,7 +88,7 @@
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
-            Add Student
+            {{ $t('students.addStudent') }}
           </router-link>
         </div>
       </div>
@@ -170,31 +170,91 @@
     <!-- Delete Confirmation Modal -->
     <Modal
       v-model="showDeleteModal"
-      title="Confirm Deletion"
-      size="sm"
+      :title="$t('students.modal.confirmDeletion')"
+      size="md"
     >
-      <div class="text-center">
-        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-          </svg>
+      <div class="space-y-6">
+        <!-- Warning Icon & Header -->
+        <div class="flex items-center justify-center">
+          <div class="relative">
+            <div class="w-20 h-20 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center">
+              <div class="absolute inset-0 bg-red-500/10 rounded-full animate-pulse"></div>
+              <svg class="w-10 h-10 text-red-600 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold text-slate-900 mb-2">Are you sure?</h3>
-        <p class="text-slate-600 mb-6">
-          This action will permanently delete <strong>{{ studentToDelete?.first_name }} {{ studentToDelete?.last_name }}</strong>. This cannot be undone.
-        </p>
-        <div class="flex justify-center space-x-3">
+
+        <!-- Content -->
+        <div class="text-center space-y-4">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{{ $t('students.modal.areYouSure') }}</h3>
+            <p class="text-slate-600 leading-relaxed">
+              {{ $t('students.modal.deleteWarning', { studentName: `${studentToDelete?.first_name} ${studentToDelete?.last_name}` }) }}
+            </p>
+          </div>
+
+          <!-- Student Info Card -->
+          <div v-if="studentToDelete" class="bg-slate-50 border border-slate-200 rounded-lg p-4 mx-auto max-w-sm">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                {{ studentToDelete.first_name?.charAt(0) }}{{ studentToDelete.last_name?.charAt(0) }}
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-slate-900 truncate">
+                  {{ studentToDelete.first_name }} {{ studentToDelete.last_name }}
+                </p>
+                <p class="text-sm text-slate-600 truncate">{{ studentToDelete.student_id }}</p>
+                <p class="text-sm text-slate-500 truncate">{{ studentToDelete.email }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Warning Text -->
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+            <p class="text-sm text-red-800 font-medium mb-2">{{ $t('students.modal.dangerZone') }}</p>
+            <p class="text-sm text-red-700">{{ $t('students.modal.deleteConfirmText') }}</p>
+          </div>
+
+          <!-- Confirmation Input -->
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-slate-700 text-left">
+              {{ $t('students.modal.typeToConfirm') }}
+            </label>
+            <input
+              v-model="deleteConfirmText"
+              type="text"
+              :placeholder="$t('students.modal.deletePlaceholder')"
+              class="w-full px-3 py-2 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors"
+              @keyup.enter="deleteConfirmText === 'DELETE' && handleDeleteStudent()"
+            />
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col-reverse sm:flex-row sm:justify-end space-y-3 space-y-reverse sm:space-y-0 sm:space-x-3 pt-4 border-t border-slate-200">
           <button
-            @click="showDeleteModal = false"
-            class="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors"
+            @click="cancelDelete"
+            class="w-full sm:w-auto px-6 py-3 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200"
           >
-            Cancel
+            {{ $t('common.cancel') }}
           </button>
           <button
             @click="handleDeleteStudent"
-            class="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors"
+            :disabled="deleteConfirmText !== 'DELETE' || isDeleting"
+            class="w-full sm:w-auto px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-red-600 to-red-700 border border-transparent rounded-lg hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
-            Delete Student
+            <div v-if="isDeleting" class="flex items-center justify-center space-x-2">
+              <div class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+              <span>{{ $t('common.loading') }}...</span>
+            </div>
+            <div v-else class="flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              <span>{{ $t('students.deleteStudent') }}</span>
+            </div>
           </button>
         </div>
       </div>
@@ -205,6 +265,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useToast } from 'vue-toastification'
 import { useStudents } from '../composables/useStudents'
 import StudentCard from '../components/StudentCard.vue'
 import Pagination from '../components/Pagination.vue'
@@ -212,6 +274,8 @@ import Modal from '../components/Modal.vue'
 import type { Student } from '../types/student'
 
 const router = useRouter()
+const { t } = useI18n()
+const toast = useToast()
 
 const {
   loading,
@@ -236,6 +300,9 @@ const showFilters = ref(false)
 // Computed properties
 const totalStudents = computed(() => pagination.total)
 const activeStudents = computed(() => students.value.filter(s => s.is_active).length)
+// Modal states
+const deleteConfirmText = ref('')
+const isDeleting = ref(false)
 
 // Methods
 const handleSearchInput = async (event: Event) => {
@@ -259,18 +326,32 @@ const editStudent = (student: Student) => {
 const confirmDeleteStudent = (student: Student) => {
   studentToDelete.value = student
   showDeleteModal.value = true
+  deleteConfirmText.value = ''
+}
+
+const cancelDelete = () => {
+  showDeleteModal.value = false
+  studentToDelete.value = null
+  deleteConfirmText.value = ''
+  isDeleting.value = false
 }
 
 const handleDeleteStudent = async () => {
-  if (studentToDelete.value) {
-    try {
-      await deleteStudent(studentToDelete.value.id)
-      showDeleteModal.value = false
-      studentToDelete.value = null
-      await refreshStudents()
-    } catch (error) {
-      console.error('Failed to delete student:', error)
-    }
+  if (!studentToDelete.value || deleteConfirmText.value !== 'DELETE') return
+  
+  isDeleting.value = true
+  
+  try {
+    await deleteStudent(studentToDelete.value.id)
+    toast.success(t('students.messages.deleteSuccess'))
+    showDeleteModal.value = false
+    studentToDelete.value = null
+    deleteConfirmText.value = ''
+  } catch (error: any) {
+    const errorMessage = error.response?.data?.detail || t('students.messages.deleteError')
+    toast.error(errorMessage)
+  } finally {
+    isDeleting.value = false
   }
 }
 

@@ -11,11 +11,11 @@
             <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
-            Quay lại danh sách
+            {{ $t('common.back') }}
           </router-link>
         </div>
-        <h1 class="text-3xl font-bold text-gray-900">Thêm sinh viên mới</h1>
-        <p class="mt-2 text-gray-600">Điền thông tin để tạo sinh viên mới trong hệ thống</p>
+        <h1 class="text-3xl font-bold text-gray-900">{{ $t('students.createStudent') }}</h1>
+        <p class="mt-2 text-gray-600">{{ $t('students.createSubtitle') }}</p>
       </div>
 
       <!-- Success Alert -->
@@ -28,8 +28,8 @@
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
           <div class="ml-3">
-            <h3 class="text-sm font-medium text-green-800">Thành công!</h3>
-            <div class="mt-2 text-sm text-green-700">Sinh viên đã được tạo thành công.</div>
+            <h3 class="text-sm font-medium text-green-800">{{ $t('common.success') }}!</h3>
+            <div class="mt-2 text-sm text-green-700">{{ $t('students.createSuccess') }}</div>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
           </svg>
           <div class="ml-3">
-            <h3 class="text-sm font-medium text-red-800">Có lỗi xảy ra</h3>
+            <h3 class="text-sm font-medium text-red-800">{{ $t('common.error') }}</h3>
             <div class="mt-2 text-sm text-red-700">{{ error }}</div>
           </div>
         </div>

@@ -1,0 +1,141 @@
+{
+    "common": {
+        "loading": "読み込み中...",
+        "error": "エラー",
+        "success": "成功",
+        "cancel": "キャンセル",
+        "confirm": "確認",
+        "save": "保存",
+        "delete": "削除",
+        "edit": "編集",
+        "create": "作成",
+        "update": "更新",
+        "search": "検索",
+        "back": "戻る",
+        "next": "次へ",
+        "previous": "前へ",
+        "yes": "はい",
+        "no": "いいえ",
+        "actions": "アクション",
+        "view": "表示",
+        "close": "閉じる",
+        "submit": "送信"
+    },
+    "nav": {
+        "brand": "EduManager",
+        "tagline": "学生管理システム",
+        "students": "学生",
+        "dashboard": "ダッシュボード",
+        "reports": "レポート",
+        "settings": "設定",
+        "profile": "あなたのプロフィール",
+        "help": "ヘルプ＆サポート",
+        "logout": "ログアウト",
+        "login": "ログイン"
+    },
+    "auth": {
+        "login": {
+            "title": "学生管理システム",
+            "subtitle": "続行するにはログインしてください",
+            "email": "メールアドレス",
+            "password": "パスワード",
+            "emailPlaceholder": "メールアドレスを入力",
+            "passwordPlaceholder": "パスワードを入力",
+            "loginButton": "ログイン",
+            "loggingIn": "ログイン中...",
+            "demoCredentials": "デモアカウント：",
+            "invalidCredentials": "メールアドレスまたはパスワードが正しくありません",
+            "loginSuccess": "ログインに成功しました",
+            "signedInAs": "ログイン中："
+        }
+    },
+    "students": {
+        "title": "学生",
+        "subtitle": "学生の記録と情報を管理",
+        "addStudent": "学生を追加",
+        "searchPlaceholder": "学生を検索...",
+        "totalStudents": "学生の総数",
+        "activeStudents": "アクティブな学生",
+        "filter": "学生をフィルタリング",
+        "refresh": "更新",
+        "noStudentsFound": "学生が見つかりません",
+        "studentDetails": "学生の詳細",
+        "editStudent": "学生を編集",
+        "deleteStudent": "学生を削除",
+        "createStudent": "学生を作成",
+        "updateStudent": "学生を更新",
+        "createSubtitle": "システムに新しい学生を作成するために情報を入力してください",
+        "editSubtitle": "学生情報を更新する",
+        "personalInfo": "個人情報",
+        "contactInfo": "連絡先情報",
+        "confirmDelete": "この学生を削除してもよろしいですか？",
+        "deleteSuccess": "学生の削除に成功しました",
+        "createSuccess": "学生の作成に成功しました",
+        "updateSuccess": "学生の更新に成功しました",
+        "messages": {
+            "deleteSuccess": "学生を削除しました",
+            "deleteError": "学生の削除に失敗しました"
+        },
+        "modal": {
+            "confirmDeletion": "削除の確認",
+            "areYouSure": "よろしいですか？",
+            "deleteWarning": "この操作により{studentName}が永続的に削除されます。この操作は元に戻せません。",
+            "deleteConfirmText": "削除すると、この学生に関連するすべてのデータがシステムから永続的に削除されます。",
+            "typeToConfirm": "確認するためにDELETEと入力してください",
+            "deletePlaceholder": "ここにDELETEと入力...",
+            "dangerZone": "危険ゾーン"
+        },
+        "fields": {
+            "studentId": "学生ID",
+            "firstName": "名",
+            "lastName": "姓",
+            "fullName": "氏名",
+            "email": "メールアドレス",
+            "phone": "電話番号",
+            "dateOfBirth": "生年月日",
+            "address": "住所",
+            "status": "ステータス",
+            "isActive": "アクティブ",
+            "createdAt": "作成日時",
+            "updatedAt": "更新日時"
+        },
+        "status": {
+            "active": "アクティブ",
+            "inactive": "非アクティブ"
+        },
+        "placeholders": {
+            "studentId": "学生IDを入力",
+            "firstName": "名を入力",
+            "lastName": "姓を入力",
+            "email": "メールアドレスを入力",
+            "phone": "電話番号を入力",
+            "dateOfBirth": "生年月日を選択",
+            "address": "住所を入力"
+        },
+        "validation": {
+            "studentIdRequired": "学生IDは必須です",
+            "firstNameRequired": "名は必須です",
+            "lastNameRequired": "姓は必須です",
+            "emailRequired": "メールアドレスは必須です",
+            "emailInvalid": "有効なメールアドレスを入力してください",
+            "studentIdExists": "学生IDは既に存在します",
+            "emailExists": "メールアドレスは既に存在します"
+        },
+        "table": {
+            "showingResults": "{total}件中{from}〜{to}件を表示",
+            "noData": "学生がいません",
+            "itemsPerPage": "ページあたりの件数"
+        }
+    },
+    "pagination": {
+        "previous": "前へ",
+        "next": "次へ",
+        "page": "ページ {current} / {total}",
+        "showing": "{total}件中{from}〜{to}件を表示",
+        "itemsPerPage": "ページあたりの件数"
+    },
+    "language": {
+        "select": "言語を選択",
+        "current": "現在: {language}"
+    }
+}
