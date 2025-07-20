@@ -11,6 +11,7 @@ from app.db.database import Base
 from app.core.settings import settings
 # Import all models here for Alembic to detect them
 from app.models.student import Student
+from app.models.user import User
 
 # This is the Alembic Config object
 config = context.config

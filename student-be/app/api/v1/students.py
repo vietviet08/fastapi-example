@@ -9,6 +9,8 @@ from app.schemas.student import (
     StudentListResponse
 )
 from app.services.student_service import StudentService
+from app.services.auth_service import get_current_active_user
+from app.models.user import User
 import math
 
 router = APIRouter()
@@ -17,7 +19,8 @@ router = APIRouter()
 @router.post("/students/", response_model=StudentResponse, status_code=201)
 def create_student(
     student: StudentCreate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Tạo sinh viên mới"""
     service = StudentService(db)
@@ -38,7 +41,8 @@ def create_student(
 @router.get("/students/{student_id}", response_model=StudentResponse)
 def get_student(
     student_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Lấy thông tin sinh viên theo ID"""
     service = StudentService(db)
@@ -55,7 +59,8 @@ def get_students(
     page: int = Query(1, ge=1, description="Số trang"),
     size: int = Query(10, ge=1, le=100, description="Số lượng mỗi trang"),
     search: Optional[str] = Query(None, description="Từ khóa tìm kiếm"),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Lấy danh sách sinh viên với phân trang và tìm kiếm"""
     service = StudentService(db)
@@ -78,7 +83,8 @@ def get_students(
 def update_student(
     student_id: int,
     student_update: StudentUpdate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Cập nhật thông tin sinh viên"""
     service = StudentService(db)
@@ -100,7 +106,8 @@ def update_student(
 def delete_student(
     student_id: int,
     hard_delete: bool = Query(False, description="Xóa hoàn toàn (true) hoặc vô hiệu hóa (false)"),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Xóa sinh viên"""
     service = StudentService(db)

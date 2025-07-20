@@ -1,3 +1,4 @@
 from .student import Student
+from .user import User
 
-__all__ = ["Student"]
+__all__ = ["Student", "User"]
