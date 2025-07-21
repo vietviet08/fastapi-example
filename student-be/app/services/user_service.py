@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from app.models.user import User
-from app.schemas.auth import UserCreate
-from app.services.auth_service import get_password_hash
+from app.schemas.auth import UserCreate, UpdateProfileRequest
+from app.services.auth_service import get_password_hash, verify_password
 
 
 class UserService:
@@ -28,3 +28,27 @@ class UserService:
     def user_exists(self, email: str) -> bool:
         """Kiểm tra user có tồn tại không"""
         return self.db.query(User).filter(User.email == email).first() is not None
+    
+    def update_user_profile(self, user: User, update_data: UpdateProfileRequest) -> User:
+        """Cập nhật thông tin user"""
+        if update_data.email is not None:
+            # Check if email already exists
+            existing_user = self.get_user_by_email(update_data.email)
+            if existing_user and existing_user.id != user.id:
+                return None
+            user.email = update_data.email
+        
+        self.db.commit()
+        self.db.refresh(user)
+        return user
+    
+    def change_password(self, user: User, current_password: str, new_password: str) -> bool:
+        """Đổi mật khẩu"""
+        # Verify current password
+        if not verify_password(current_password, user.hashed_password):
+            return False
+        
+        # Hash and set new password
+        user.hashed_password = get_password_hash(new_password)
+        self.db.commit()
+        return True
