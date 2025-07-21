@@ -71,6 +71,104 @@
         "updateError": "Failed to update profile",
         "passwordChangeSuccess": "Password changed successfully"
     },
+    "settings": {
+        "title": "Settings",
+        "loadError": "Failed to load settings",
+        "saveSuccess": "Settings saved successfully",
+        "saveError": "Failed to save settings",
+        "appearance": {
+            "title": "Appearance",
+            "subtitle": "Customize the appearance of the application",
+            "language": "Language",
+            "theme": "Theme",
+            "dateFormat": "Date Format",
+            "themes": {
+                "light": "Light",
+                "dark": "Dark",
+                "system": "System Default"
+            }
+        },
+        "notifications": {
+            "title": "Notifications",
+            "subtitle": "Manage your notification preferences",
+            "emailNotifications": {
+                "title": "Email Notifications",
+                "description": "Receive notifications via email"
+            },
+            "systemNotifications": {
+                "title": "System Notifications",
+                "description": "Receive in-app notifications"
+            },
+            "studentUpdates": {
+                "title": "Student Updates",
+                "description": "Get notified when student records are updated"
+            },
+            "securityAlerts": {
+                "title": "Security Alerts",
+                "description": "Get notified about security-related events"
+            }
+        },
+        "security": {
+            "title": "Security",
+            "subtitle": "Manage your security settings",
+            "twoFactor": {
+                "title": "Two-Factor Authentication",
+                "description": "Add an extra layer of security to your account",
+                "setupInstructions": "Scan this QR code with your authenticator app",
+                "qrCode": "QR Code will appear here",
+                "verifyCode": "Verification Code",
+                "enterCode": "Enter 6-digit code",
+                "verify": "Verify",
+                "success": "Two-factor authentication enabled successfully",
+                "error": "Invalid verification code"
+            },
+            "sessions": {
+                "title": "Active Sessions",
+                "description": "Manage your active sessions across devices",
+                "terminate": "Terminate",
+                "current": "Current Session",
+                "logoutAll": "Logout from all other devices",
+                "terminatedSuccess": "Session terminated successfully",
+                "logoutAllSuccess": "Logged out from all other devices"
+            },
+            "passwordPolicy": {
+                "title": "Password Requirements",
+                "description": "Your password must meet the following requirements:",
+                "minLength": "Minimum 8 characters",
+                "upperCase": "At least one uppercase letter",
+                "lowerCase": "At least one lowercase letter",
+                "numbers": "At least one number",
+                "special": "At least one special character"
+            }
+        },
+        "system": {
+            "title": "System",
+            "subtitle": "Advanced system settings",
+            "maintenanceMode": {
+                "title": "Maintenance Mode",
+                "description": "Enable maintenance mode to temporarily block access to the system for non-admin users"
+            },
+            "autoBackup": {
+                "title": "Automatic Backups",
+                "description": "Configure automatic database backup frequency",
+                "daily": "Daily",
+                "weekly": "Weekly",
+                "monthly": "Monthly",
+                "disabled": "Disabled"
+            },
+            "emailConfig": {
+                "title": "Email Configuration",
+                "description": "Configure the system email settings",
+                "smtpServer": "SMTP Server",
+                "port": "Port",
+                "username": "Username",
+                "password": "Password",
+                "fromEmail": "From Email Address",
+                "testConnection": "Test Connection",
+                "testSuccess": "Email configuration test successful"
+            }
+        }
+    },
     "students": {
         "title": "Students",
         "subtitle": "Manage student records and information",

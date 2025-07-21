@@ -70,6 +70,104 @@
         "updateError": "プロフィールの更新に失敗しました",
         "passwordChangeSuccess": "パスワードを変更しました"
     },
+    "settings": {
+        "title": "設定",
+        "loadError": "設定の読み込みに失敗しました",
+        "saveSuccess": "設定を保存しました",
+        "saveError": "設定の保存に失敗しました",
+        "appearance": {
+            "title": "外観",
+            "subtitle": "アプリケーションの外観をカスタマイズ",
+            "language": "言語",
+            "theme": "テーマ",
+            "dateFormat": "日付形式",
+            "themes": {
+                "light": "ライト",
+                "dark": "ダーク",
+                "system": "システム設定に従う"
+            }
+        },
+        "notifications": {
+            "title": "通知",
+            "subtitle": "通知設定を管理",
+            "emailNotifications": {
+                "title": "メール通知",
+                "description": "メールで通知を受け取る"
+            },
+            "systemNotifications": {
+                "title": "システム通知",
+                "description": "アプリ内で通知を受け取る"
+            },
+            "studentUpdates": {
+                "title": "学生情報の更新",
+                "description": "学生の記録が更新されたときに通知を受け取る"
+            },
+            "securityAlerts": {
+                "title": "セキュリティアラート",
+                "description": "セキュリティ関連のイベントについて通知を受け取る"
+            }
+        },
+        "security": {
+            "title": "セキュリティ",
+            "subtitle": "セキュリティ設定を管理",
+            "twoFactor": {
+                "title": "二段階認証",
+                "description": "アカウントにセキュリティレイヤーを追加",
+                "setupInstructions": "認証アプリでこのQRコードをスキャンしてください",
+                "qrCode": "QRコードがここに表示されます",
+                "verifyCode": "認証コード",
+                "enterCode": "6桁のコードを入力",
+                "verify": "検証",
+                "success": "二段階認証が正常に有効化されました",
+                "error": "認証コードが無効です"
+            },
+            "sessions": {
+                "title": "アクティブセッション",
+                "description": "デバイス間のアクティブセッションを管理",
+                "terminate": "終了",
+                "current": "現在のセッション",
+                "logoutAll": "他のすべてのデバイスからログアウト",
+                "terminatedSuccess": "セッションを正常に終了しました",
+                "logoutAllSuccess": "他のすべてのデバイスからログアウトしました"
+            },
+            "passwordPolicy": {
+                "title": "パスワード要件",
+                "description": "パスワードは以下の要件を満たす必要があります：",
+                "minLength": "最低8文字",
+                "upperCase": "大文字を少なくとも1つ",
+                "lowerCase": "小文字を少なくとも1つ",
+                "numbers": "数字を少なくとも1つ",
+                "special": "特殊文字を少なくとも1つ"
+            }
+        },
+        "system": {
+            "title": "システム",
+            "subtitle": "高度なシステム設定",
+            "maintenanceMode": {
+                "title": "メンテナンスモード",
+                "description": "非管理者ユーザーのシステムアクセスを一時的にブロック"
+            },
+            "autoBackup": {
+                "title": "自動バックアップ",
+                "description": "データベースの自動バックアップ頻度を設定",
+                "daily": "毎日",
+                "weekly": "毎週",
+                "monthly": "毎月",
+                "disabled": "無効"
+            },
+            "emailConfig": {
+                "title": "メール設定",
+                "description": "システムメール設定を構成",
+                "smtpServer": "SMTPサーバー",
+                "port": "ポート",
+                "username": "ユーザー名",
+                "password": "パスワード",
+                "fromEmail": "送信元メールアドレス",
+                "testConnection": "接続テスト",
+                "testSuccess": "メール設定のテストに成功しました"
+            }
+        }
+    },
     "students": {
         "title": "学生",
         "subtitle": "学生の記録と情報を管理",

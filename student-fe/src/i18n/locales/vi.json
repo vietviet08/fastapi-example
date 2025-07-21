@@ -70,6 +70,104 @@
         "updateError": "Cập nhật hồ sơ thất bại",
         "passwordChangeSuccess": "Đổi mật khẩu thành công"
     },
+    "settings": {
+        "title": "Cài đặt",
+        "loadError": "Không thể tải cài đặt",
+        "saveSuccess": "Lưu cài đặt thành công",
+        "saveError": "Lưu cài đặt thất bại",
+        "appearance": {
+            "title": "Giao diện",
+            "subtitle": "Tùy chỉnh giao diện ứng dụng",
+            "language": "Ngôn ngữ",
+            "theme": "Giao diện",
+            "dateFormat": "Định dạng ngày tháng",
+            "themes": {
+                "light": "Sáng",
+                "dark": "Tối",
+                "system": "Theo hệ thống"
+            }
+        },
+        "notifications": {
+            "title": "Thông báo",
+            "subtitle": "Quản lý tùy chọn thông báo của bạn",
+            "emailNotifications": {
+                "title": "Thông báo qua email",
+                "description": "Nhận thông báo qua email"
+            },
+            "systemNotifications": {
+                "title": "Thông báo hệ thống",
+                "description": "Nhận thông báo trong ứng dụng"
+            },
+            "studentUpdates": {
+                "title": "Cập nhật sinh viên",
+                "description": "Nhận thông báo khi thông tin sinh viên được cập nhật"
+            },
+            "securityAlerts": {
+                "title": "Cảnh báo bảo mật",
+                "description": "Nhận thông báo về các sự kiện liên quan đến bảo mật"
+            }
+        },
+        "security": {
+            "title": "Bảo mật",
+            "subtitle": "Quản lý cài đặt bảo mật của bạn",
+            "twoFactor": {
+                "title": "Xác thực hai yếu tố",
+                "description": "Thêm một lớp bảo mật bổ sung cho tài khoản của bạn",
+                "setupInstructions": "Quét mã QR này bằng ứng dụng xác thực của bạn",
+                "qrCode": "Mã QR sẽ xuất hiện ở đây",
+                "verifyCode": "Mã xác thực",
+                "enterCode": "Nhập mã 6 chữ số",
+                "verify": "Xác minh",
+                "success": "Xác thực hai yếu tố đã được kích hoạt thành công",
+                "error": "Mã xác thực không hợp lệ"
+            },
+            "sessions": {
+                "title": "Phiên đang hoạt động",
+                "description": "Quản lý phiên hoạt động trên các thiết bị",
+                "terminate": "Kết thúc",
+                "current": "Phiên hiện tại",
+                "logoutAll": "Đăng xuất khỏi tất cả thiết bị khác",
+                "terminatedSuccess": "Phiên đã được kết thúc thành công",
+                "logoutAllSuccess": "Đã đăng xuất khỏi tất cả thiết bị khác"
+            },
+            "passwordPolicy": {
+                "title": "Yêu cầu mật khẩu",
+                "description": "Mật khẩu của bạn phải đáp ứng các yêu cầu sau:",
+                "minLength": "Tối thiểu 8 ký tự",
+                "upperCase": "Ít nhất một chữ cái viết hoa",
+                "lowerCase": "Ít nhất một chữ cái viết thường",
+                "numbers": "Ít nhất một chữ số",
+                "special": "Ít nhất một ký tự đặc biệt"
+            }
+        },
+        "system": {
+            "title": "Hệ thống",
+            "subtitle": "Cài đặt hệ thống nâng cao",
+            "maintenanceMode": {
+                "title": "Chế độ bảo trì",
+                "description": "Bật chế độ bảo trì để tạm thời chặn quyền truy cập vào hệ thống đối với người dùng không phải quản trị viên"
+            },
+            "autoBackup": {
+                "title": "Sao lưu tự động",
+                "description": "Cấu hình tần suất sao lưu cơ sở dữ liệu tự động",
+                "daily": "Hàng ngày",
+                "weekly": "Hàng tuần",
+                "monthly": "Hàng tháng",
+                "disabled": "Đã tắt"
+            },
+            "emailConfig": {
+                "title": "Cấu hình email",
+                "description": "Cấu hình cài đặt email hệ thống",
+                "smtpServer": "Máy chủ SMTP",
+                "port": "Cổng",
+                "username": "Tên đăng nhập",
+                "password": "Mật khẩu",
+                "fromEmail": "Địa chỉ email gửi",
+                "testConnection": "Kiểm tra kết nối",
+                "testSuccess": "Kiểm tra cấu hình email thành công"
+            }
+        }
+    },
     "students": {
         "title": "Sinh viên",
         "subtitle": "Quản lý hồ sơ và thông tin sinh viên",
