@@ -6,6 +6,7 @@ import EditStudentView from '@/views/EditStudentView.vue'
 import LoginView from '@/views/LoginView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import SettingsView from '@/views/SettingsView.vue'
+import ReportsView from '@/views/ReportsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,6 +56,12 @@ const router = createRouter({
       name: 'settings',
       component: SettingsView,
       meta: { title: 'Cài đặt hệ thống', requiresAuth: true }
+    },
+    {
+      path: '/reports',
+      name: 'reports',
+      component: ReportsView,
+      meta: { title: 'Báo cáo', requiresAuth: true }
     },
     {
       path: '/:pathMatch(.*)*',

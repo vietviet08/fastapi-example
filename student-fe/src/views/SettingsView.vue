@@ -509,6 +509,7 @@ const verifyTwoFactor = () => {
 
 const logoutSession = (sessionId: number) => {
   // Here you would call your API to logout the specific session
+  console.log(`Logging out session ${sessionId}`)
   toast.success(t('settings.security.sessions.terminatedSuccess'))
 }
 

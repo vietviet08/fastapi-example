@@ -259,5 +259,75 @@
     "language": {
         "select": "Select Language",
         "current": "Current: {language}"
+    },
+    "reports": {
+        "title": "Reports",
+        "refresh": "Refresh",
+        "export": "Export",
+        "dataRefreshed": "Data refreshed successfully",
+        "refreshError": "Failed to refresh data",
+        "filtersApplied": "Filters applied successfully",
+        "filtersError": "Failed to apply filters",
+        "exporting": "Exporting as",
+        "exportedAs": "Report exported as",
+        "comparedTo": "compared to",
+        "filters": {
+            "period": "Time Period",
+            "dateRange": "Date Range",
+            "groupBy": "Group By",
+            "apply": "Apply Filters",
+            "periods": {
+                "current_month": "Current Month",
+                "last_month": "Last Month",
+                "last_3_months": "Last 3 Months",
+                "last_6_months": "Last 6 Months",
+                "current_year": "Current Year",
+                "last_year": "Last Year",
+                "custom": "Custom Range"
+            },
+            "groups": {
+                "day": "Day",
+                "week": "Week",
+                "month": "Month",
+                "year": "Year"
+            },
+            "chartViews": {
+                "daily": "Daily",
+                "weekly": "Weekly",
+                "monthly": "Monthly",
+                "yearly": "Yearly"
+            }
+        },
+        "stats": {
+            "totalStudents": "Total Students",
+            "newEnrollments": "New Enrollments",
+            "completionRate": "Completion Rate"
+        },
+        "charts": {
+            "enrollmentTrend": "Enrollment Trend",
+            "enrollmentTrendDescription": "Student enrollment trends over time",
+            "studentDistribution": "Student Distribution",
+            "studentDistributionDescription": "Distribution of students by program",
+            "performanceMetrics": "Performance Metrics",
+            "performanceMetricsDescription": "Academic performance indicators"
+        },
+        "tables": {
+            "recentActivities": "Recent Activities",
+            "recentActivitiesDescription": "Latest updates and activities in the system",
+            "noActivities": "No recent activities found",
+            "showingResults": "Showing {from} to {to} of {total} activities",
+            "headers": {
+                "date": "Date & Time",
+                "studentId": "Student ID",
+                "name": "Student Name",
+                "activity": "Activity",
+                "details": "Details"
+            }
+        },
+        "placeholders": {
+            "chart": "Chart will be rendered here",
+            "barChart": "Bar chart will be rendered here",
+            "pieChart": "Pie chart will be rendered here"
+        }
     }
 }

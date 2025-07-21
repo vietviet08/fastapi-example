@@ -258,5 +258,75 @@
     "language": {
         "select": "言語を選択",
         "current": "現在: {language}"
+    },
+    "reports": {
+        "title": "レポート",
+        "refresh": "更新",
+        "export": "エクスポート",
+        "dataRefreshed": "データが正常に更新されました",
+        "refreshError": "データの更新に失敗しました",
+        "filtersApplied": "フィルターが正常に適用されました",
+        "filtersError": "フィルターの適用に失敗しました",
+        "exporting": "エクスポート形式：",
+        "exportedAs": "レポートをエクスポートしました：",
+        "comparedTo": "比較対象：",
+        "filters": {
+            "period": "期間",
+            "dateRange": "日付範囲",
+            "groupBy": "グループ化",
+            "apply": "フィルター適用",
+            "periods": {
+                "current_month": "今月",
+                "last_month": "先月",
+                "last_3_months": "過去3ヶ月",
+                "last_6_months": "過去6ヶ月",
+                "current_year": "今年",
+                "last_year": "昨年",
+                "custom": "カスタム範囲"
+            },
+            "groups": {
+                "day": "日",
+                "week": "週",
+                "month": "月",
+                "year": "年"
+            },
+            "chartViews": {
+                "daily": "日次",
+                "weekly": "週次",
+                "monthly": "月次",
+                "yearly": "年次"
+            }
+        },
+        "stats": {
+            "totalStudents": "学生総数",
+            "newEnrollments": "新規入学者数",
+            "completionRate": "修了率"
+        },
+        "charts": {
+            "enrollmentTrend": "入学傾向",
+            "enrollmentTrendDescription": "時間経過による学生入学の傾向",
+            "studentDistribution": "学生分布",
+            "studentDistributionDescription": "プログラム別の学生分布",
+            "performanceMetrics": "成績指標",
+            "performanceMetricsDescription": "学業成績の指標"
+        },
+        "tables": {
+            "recentActivities": "最近のアクティビティ",
+            "recentActivitiesDescription": "システム内の最新の更新とアクティビティ",
+            "noActivities": "最近のアクティビティはありません",
+            "showingResults": "{total}件中{from}～{to}件を表示",
+            "headers": {
+                "date": "日時",
+                "studentId": "学生ID",
+                "name": "学生名",
+                "activity": "アクティビティ",
+                "details": "詳細"
+            }
+        },
+        "placeholders": {
+            "chart": "ここにチャートが表示されます",
+            "barChart": "ここに棒グラフが表示されます",
+            "pieChart": "ここに円グラフが表示されます"
+        }
     }
 }

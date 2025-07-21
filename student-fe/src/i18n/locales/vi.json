@@ -258,5 +258,75 @@
     "language": {
         "select": "Chọn ngôn ngữ",
         "current": "Hiện tại: {language}"
+    },
+    "reports": {
+        "title": "Báo cáo",
+        "refresh": "Làm mới",
+        "export": "Xuất",
+        "dataRefreshed": "Dữ liệu được làm mới thành công",
+        "refreshError": "Không thể làm mới dữ liệu",
+        "filtersApplied": "Bộ lọc đã được áp dụng thành công",
+        "filtersError": "Không thể áp dụng bộ lọc",
+        "exporting": "Đang xuất theo định dạng",
+        "exportedAs": "Báo cáo đã xuất theo định dạng",
+        "comparedTo": "so với",
+        "filters": {
+            "period": "Khoảng thời gian",
+            "dateRange": "Phạm vi ngày",
+            "groupBy": "Nhóm theo",
+            "apply": "Áp dụng bộ lọc",
+            "periods": {
+                "current_month": "Tháng hiện tại",
+                "last_month": "Tháng trước",
+                "last_3_months": "3 tháng gần nhất",
+                "last_6_months": "6 tháng gần nhất",
+                "current_year": "Năm hiện tại",
+                "last_year": "Năm trước",
+                "custom": "Tùy chỉnh"
+            },
+            "groups": {
+                "day": "Ngày",
+                "week": "Tuần",
+                "month": "Tháng",
+                "year": "Năm"
+            },
+            "chartViews": {
+                "daily": "Hàng ngày",
+                "weekly": "Hàng tuần",
+                "monthly": "Hàng tháng",
+                "yearly": "Hàng năm"
+            }
+        },
+        "stats": {
+            "totalStudents": "Tổng số sinh viên",
+            "newEnrollments": "Sinh viên mới",
+            "completionRate": "Tỉ lệ hoàn thành"
+        },
+        "charts": {
+            "enrollmentTrend": "Xu hướng tuyển sinh",
+            "enrollmentTrendDescription": "Xu hướng tuyển sinh theo thời gian",
+            "studentDistribution": "Phân bố sinh viên",
+            "studentDistributionDescription": "Phân bố sinh viên theo chương trình học",
+            "performanceMetrics": "Chỉ số học tập",
+            "performanceMetricsDescription": "Các chỉ số về học tập của sinh viên"
+        },
+        "tables": {
+            "recentActivities": "Hoạt động gần đây",
+            "recentActivitiesDescription": "Những cập nhật và hoạt động mới nhất trong hệ thống",
+            "noActivities": "Không tìm thấy hoạt động gần đây nào",
+            "showingResults": "Hiển thị {from} đến {to} trên tổng số {total} hoạt động",
+            "headers": {
+                "date": "Ngày & giờ",
+                "studentId": "Mã sinh viên",
+                "name": "Tên sinh viên",
+                "activity": "Hoạt động",
+                "details": "Chi tiết"
+            }
+        },
+        "placeholders": {
+            "chart": "Biểu đồ sẽ được hiển thị tại đây",
+            "barChart": "Biểu đồ cột sẽ được hiển thị tại đây",
+            "pieChart": "Biểu đồ tròn sẽ được hiển thị tại đây"
+        }
     }
 }
