@@ -6,6 +6,7 @@
         "cancel": "キャンセル",
         "confirm": "確認",
         "save": "保存",
+        "saving": "保存中...",
         "delete": "削除",
         "deleting": "削除中...",
         "edit": "編集",
@@ -20,7 +21,8 @@
         "actions": "アクション",
         "view": "表示",
         "close": "閉じる",
-        "submit": "送信"
+        "submit": "送信",
+        "tryAgain": "再試行"
     },
     "nav": {
         "brand": "EduManager",
@@ -49,6 +51,24 @@
             "loginSuccess": "ログインに成功しました",
             "signedInAs": "ログイン中："
         }
+    },
+    "profile": {
+        "title": "プロフィール",
+        "adminRole": "管理者",
+        "userRole": "一般ユーザー",
+        "email": "メールアドレス",
+        "changePassword": "パスワード変更",
+        "currentPassword": "現在のパスワード",
+        "newPassword": "新しいパスワード",
+        "confirmPassword": "新しいパスワード（確認）",
+        "passwordPlaceholder": "現在のパスワードを入力",
+        "newPasswordPlaceholder": "新しいパスワードを入力",
+        "confirmPasswordPlaceholder": "新しいパスワードを再入力",
+        "passwordsMustMatch": "パスワードが一致しません",
+        "loadError": "プロフィール情報の読み込みに失敗しました",
+        "updateSuccess": "プロフィールを更新しました",
+        "updateError": "プロフィールの更新に失敗しました",
+        "passwordChangeSuccess": "パスワードを変更しました"
     },
     "students": {
         "title": "学生",

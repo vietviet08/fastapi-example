@@ -61,10 +61,18 @@ export function useAuth() {
     
     if (savedToken && savedUser) {
       try {
+        // Set initial values from localStorage to prevent blank screen on reload
+        token.value = savedToken
+        try {
+          user.value = JSON.parse(savedUser)
+        } catch (e) {
+          console.error('Failed to parse saved user data')
+        }
+        
         // Verify token by calling /auth/me
         const response = await authAPI.getCurrentUser()
         
-        token.value = savedToken
+        // Update with fresh data from API
         user.value = response
         
       } catch (error) {

@@ -18,6 +18,15 @@ export interface LoginResponse {
   user: UserResponse
 }
 
+export interface ProfileUpdateRequest {
+  email?: string
+}
+
+export interface PasswordChangeRequest {
+  current_password: string
+  new_password: string
+}
+
 export interface APIError {
   detail: string
 }

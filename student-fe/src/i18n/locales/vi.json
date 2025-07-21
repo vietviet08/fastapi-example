@@ -6,7 +6,9 @@
         "cancel": "Hủy",
         "confirm": "Xác nhận",
         "save": "Lưu",
+        "saving": "Đang lưu...",
         "delete": "Xóa",
+        "deleting": "Đang xóa...",
         "edit": "Sửa",
         "create": "Tạo",
         "update": "Cập nhật",
@@ -19,7 +21,8 @@
         "actions": "Hành động",
         "view": "Xem",
         "close": "Đóng",
-        "submit": "Gửi"
+        "submit": "Gửi",
+        "tryAgain": "Thử lại"
     },
     "nav": {
         "brand": "EduManager",
@@ -48,6 +51,24 @@
             "loginSuccess": "Đăng nhập thành công",
             "signedInAs": "Đã đăng nhập với tài khoản"
         }
+    },
+    "profile": {
+        "title": "Hồ sơ của bạn",
+        "adminRole": "Quản trị viên",
+        "userRole": "Người dùng",
+        "email": "Địa chỉ email",
+        "changePassword": "Đổi mật khẩu",
+        "currentPassword": "Mật khẩu hiện tại",
+        "newPassword": "Mật khẩu mới",
+        "confirmPassword": "Xác nhận mật khẩu mới",
+        "passwordPlaceholder": "Nhập mật khẩu hiện tại",
+        "newPasswordPlaceholder": "Nhập mật khẩu mới",
+        "confirmPasswordPlaceholder": "Xác nhận mật khẩu mới",
+        "passwordsMustMatch": "Mật khẩu không khớp",
+        "loadError": "Không thể tải thông tin hồ sơ",
+        "updateSuccess": "Cập nhật hồ sơ thành công",
+        "updateError": "Cập nhật hồ sơ thất bại",
+        "passwordChangeSuccess": "Đổi mật khẩu thành công"
     },
     "students": {
         "title": "Sinh viên",

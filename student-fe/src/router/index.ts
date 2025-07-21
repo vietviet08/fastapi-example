@@ -4,6 +4,7 @@ import StudentDetailView from '@/views/StudentDetailView.vue'
 import CreateStudentView from '@/views/CreateStudentView.vue'
 import EditStudentView from '@/views/EditStudentView.vue'
 import LoginView from '@/views/LoginView.vue'
+import ProfileView from '@/views/ProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +42,12 @@ const router = createRouter({
       name: 'edit-student',
       component: EditStudentView,
       meta: { title: 'Sửa sinh viên', requiresAuth: true }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView,
+      meta: { title: 'Thông tin cá nhân', requiresAuth: true }
     },
     {
       path: '/:pathMatch(.*)*',

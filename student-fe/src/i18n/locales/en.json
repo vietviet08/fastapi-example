@@ -7,6 +7,7 @@
 
         "confirm": "Confirm",
         "save": "Save",
+        "saving": "Saving...",
         "delete": "Delete",
         "deleting": "Deleting...",
         "edit": "Edit",
@@ -21,7 +22,8 @@
         "actions": "Actions",
         "view": "View",
         "close": "Close",
-        "submit": "Submit"
+        "submit": "Submit",
+        "tryAgain": "Try Again"
     },
     "nav": {
         "brand": "EduManager",
@@ -50,6 +52,24 @@
             "loginSuccess": "Login successful",
             "signedInAs": "Signed in as"
         }
+    },
+    "profile": {
+        "title": "Your Profile",
+        "adminRole": "Administrator",
+        "userRole": "User",
+        "email": "Email Address",
+        "changePassword": "Change Password",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm New Password",
+        "passwordPlaceholder": "Enter your current password",
+        "newPasswordPlaceholder": "Enter a new password",
+        "confirmPasswordPlaceholder": "Confirm your new password",
+        "passwordsMustMatch": "Passwords must match",
+        "loadError": "Failed to load profile information",
+        "updateSuccess": "Profile updated successfully",
+        "updateError": "Failed to update profile",
+        "passwordChangeSuccess": "Password changed successfully"
     },
     "students": {
         "title": "Students",
